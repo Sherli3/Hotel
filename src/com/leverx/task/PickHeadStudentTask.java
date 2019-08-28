@@ -25,4 +25,3 @@ public class PickHeadStudentTask extends BaseTask {
         floor.setHead(students.get((int) (Math.random() * students.size())));
     }
 }
-

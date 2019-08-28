@@ -7,7 +7,7 @@ public class Commandant{
     private Commandant() {
 
     }
-    
+
 
     public static Commandant getInstance(){
         Commandant local = commandant;

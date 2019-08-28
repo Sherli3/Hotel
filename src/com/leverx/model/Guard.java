@@ -4,7 +4,6 @@ package com.leverx.model;
 public class Guard {
     private static Guard guard;
     private String name = "Valery Ivanovich";
-    ;
     private Room room;
 
     private Guard() {

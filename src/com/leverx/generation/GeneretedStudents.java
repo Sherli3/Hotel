@@ -1,4 +1,4 @@
-package com.leverx.fake;
+package com.leverx.generation;
 
 import com.leverx.model.Student;
 

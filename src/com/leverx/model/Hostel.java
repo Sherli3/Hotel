@@ -46,5 +46,7 @@ public class Hostel extends Thread {
         return floors;
     }
 
-
+    public Guard getGuard() {
+        return guard;
+    }
 }
