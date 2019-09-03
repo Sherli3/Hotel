@@ -23,5 +23,6 @@ public class PickHeadStudentTask extends BaseTask {
                 student.getStudyCourse()>1 && student.getRemark()==0 &&student.isAccessAvailable())
                 .collect(Collectors.toList());
         floor.setHead(students.get((int) (Math.random() * students.size())));
+
     }
 }

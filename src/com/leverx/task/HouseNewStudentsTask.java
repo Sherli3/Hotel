@@ -15,7 +15,7 @@ public class HouseNewStudentsTask extends BaseTask {
         hostel.getFloors().forEach(floor -> {
             floor.getRooms().forEach(room -> {
                 for (int i = 0; i < Room.MAX_STUDENTS; i++) {
-                    room.addStudent(Student.generate());
+                    room.addStudent(new Student.Builder().build());
                 }
             });
         });

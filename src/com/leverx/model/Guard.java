@@ -23,7 +23,7 @@ public class Guard {
 
     }
 
-    public void evictStudent(int student) {
+    public void evictStudent(Student student) {
         room.removeStudent(student);
 
     }

@@ -8,6 +8,14 @@ public class Commandant{
 
     }
 
+    public void evictStudentCommandant(Student student) {
+        Guard.getInstance().evictStudent(student);
+    }
+    public void houseStudentInCommandant(Student student) {
+        Guard.getInstance().houseStudentIn(student);
+    }
+
+
 
     public static Commandant getInstance(){
         Commandant local = commandant;
