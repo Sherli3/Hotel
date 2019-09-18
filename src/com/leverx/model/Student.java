@@ -1,6 +1,7 @@
 package com.leverx.model;
 
 public class Student {
+    private static int instanceCounter = 1;
     private String name;
     private int studyCourse;
     private Room room;
@@ -16,11 +17,6 @@ public class Student {
         this.studyCourse = studyСourse;
 
     }
-
-    public static Student generate() {
-        return new Student("VASYA " + ((int) (Math.random() * 10000)), 1);
-    }
-
 
     public String getName() {
         return name;
@@ -84,6 +80,47 @@ public class Student {
 
     public void setAccessAvailable(boolean accessAvailable) {
         isAccessAvailable = accessAvailable;
+    }
+
+    public boolean hasRemarkStudents() {
+        return this.getStudyCourse() > 4 || this.getRemark() > 2
+                || !this.isExpelled() || !this.isAccessAvailable();
+    }
+
+    public boolean hasGoodBehavior() {
+        return !this.isExpelled() && this.getStudyCourse() > 1 &&
+                this.getStudyCourse() <= 4 && this.getRemark() == 0
+                && this.isAccessAvailable();
+
+    }
+
+    public boolean hasGoodBehaviorForHeadStudent() {
+        return !this.isExpelled() && this.getStudyCourse() > 1 &&
+                this.getRemark() == 0 && this.isAccessAvailable();
+    }
+
+    public static class Builder {
+
+        private Student student;
+
+        public Builder() {
+
+            student = new Student("Unnamed student#" + (instanceCounter++), 4);
+        }
+
+        public Student build() {
+            return student;
+        }
+
+        public Builder name(String name) {
+            student.setName(name);
+            return this;
+        }
+
+        public Builder studyCourse(int course) {
+            student.setStudyCourse(course);
+            return this;
+        }
     }
 
     @Override

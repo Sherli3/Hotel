@@ -4,8 +4,9 @@ import com.leverx.model.Hostel;
 import com.leverx.model.Room;
 import com.leverx.model.Student;
 
-public class HouseNewStudentsTask extends BaseTask {
-    public HouseNewStudentsTask(Hostel hostel) {
+public class HostelNewStudentsTask extends BaseTask {
+
+    public HostelNewStudentsTask(Hostel hostel) {
         super(hostel);
     }
 
@@ -14,7 +15,7 @@ public class HouseNewStudentsTask extends BaseTask {
         hostel.getFloors().forEach(floor -> {
             floor.getRooms().forEach(room -> {
                 for (int i = 0; i < Room.MAX_STUDENTS; i++) {
-                    room.addStudent(Student.generate());
+                    room.addStudent(new Student.Builder().build());
                 }
             });
         });

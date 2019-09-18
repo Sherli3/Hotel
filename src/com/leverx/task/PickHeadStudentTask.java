@@ -19,10 +19,9 @@ public class PickHeadStudentTask extends BaseTask {
     public void run() {
         Floor floor = hostel.getFloors().get(floorNumber);
         List<Student> students = floor.getRooms().stream().flatMap
-                (room -> room.getStudents().stream()).filter(student -> !student.isExpelled()&&
-                student.getStudyCourse()>1 && student.getRemark()==0 &&student.isAccessAvailable())
+                (room -> room.getStudents().stream()).filter(Student::hasGoodBehaviorForHeadStudent)
                 .collect(Collectors.toList());
         floor.setHead(students.get((int) (Math.random() * students.size())));
+
     }
 }
-

@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class Floor {
-    public static final int MAX_ROOMS = 10;
+    public static final int MAX_ROOMS = 3;
     private int numberFloor;
     private Student head;
     private List<Room> rooms = new ArrayList<>();

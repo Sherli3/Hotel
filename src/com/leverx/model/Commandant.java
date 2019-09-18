@@ -1,43 +1,25 @@
 package com.leverx.model;
 
-public class Commandant{
+public class Commandant {
     private static Commandant commandant;
-    String name = "Maria Petrovna";
 
     private Commandant() {
 
     }
-    public  void run(){
 
-        //go through the cycle Hostel (all floors and rooms)
-        // каждые три секунды проверка
-        Student student = new Student("fdffd", 2);
-        if(student.getStudyCourse()>=4 || !student.isCreditworthy() ||
-                student.getRemark()>=2|| student.isExpelled() || !student.isAccessAvailable()){
-            int countStud=0;
-            int roomCount=0;
-            Guard.getInstance().evictStudent(countStud);
+    public static synchronized Commandant getInstance() {
+        if (commandant == null) {
+            commandant = new Commandant();
         }
-
-        if(student.getStudyCourse()<=4 && student.getRemark()<2 && !student.isExpelled() && !student.isAccessAvailable()){
-            Guard.getInstance().houseStudentIn(student);
-        }
-
-
+        return commandant;
 
     }
 
-    public static Commandant getInstance(){
-        Commandant local = commandant;
-        if(local==null){
-            synchronized (Commandant .class){
-                local= commandant;
-                if(local==null){
-                    commandant=local=new Commandant ();
-                }
-            }
-        }
-        return local;
+    public void evictStudentCommandant(Room room, Student student) {
+        Guard.getInstance().evictStudent(room, student);
+    }
 
+    public void houseStudentInCommandant(Hostel hostel, Student student) {
+        Guard.getInstance().houseStudentIn(hostel, student);
     }
 }
