@@ -82,12 +82,30 @@ public class Student {
         isAccessAvailable = accessAvailable;
     }
 
+    public boolean hasRemarkStudents() {
+        return this.getStudyCourse() > 4 || this.getRemark() > 2
+                || !this.isExpelled() || !this.isAccessAvailable();
+    }
+
+    public boolean hasGoodBehavior() {
+        return !this.isExpelled() && this.getStudyCourse() > 1 &&
+                this.getStudyCourse() <= 4 && this.getRemark() == 0
+                && this.isAccessAvailable();
+
+    }
+
+    public boolean hasGoodBehaviorForHeadStudent() {
+        return !this.isExpelled() && this.getStudyCourse() > 1 &&
+                this.getRemark() == 0 && this.isAccessAvailable();
+    }
+
     public static class Builder {
 
         private Student student;
 
         public Builder() {
-            student = new Student("Unnamed student#" + (instanceCounter++), 1);
+
+            student = new Student("Unnamed student#" + (instanceCounter++), 4);
         }
 
         public Student build() {

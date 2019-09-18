@@ -14,7 +14,7 @@ public class Room {
 
     }
 
-    public boolean removeStudent(Student student){
+    public boolean removeStudent(Student student) {
         return students.remove(student);
     }
 

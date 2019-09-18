@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class Hostel extends Thread {
+public class Hostel implements Runnable {
     public static final int MAX_FLOORS = 4;
 
     private Commandant commandant;
@@ -15,6 +17,7 @@ public class Hostel extends Thread {
     private List<Floor> floors = new ArrayList<>();
     private volatile boolean isOpen = true;
     private volatile Queue<Runnable> runnableQueue = new ArrayBlockingQueue<>(16);
+    private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     public Hostel() {
         commandant = Commandant.getInstance();
@@ -26,13 +29,18 @@ public class Hostel extends Thread {
 
     @Override
     public void run() {
-        super.run();
         while (isOpen) {
             if (runnableQueue.size() > 0) {
                 runnableQueue.poll().run();
             }
         }
     }
+
+    public void executeTask(BaseTask task) {
+
+        executorService.execute(task);
+    }
+
 
     public void runTask(BaseTask task) {
         runnableQueue.add(task);

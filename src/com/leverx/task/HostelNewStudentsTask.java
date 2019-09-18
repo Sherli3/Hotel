@@ -4,9 +4,9 @@ import com.leverx.model.Hostel;
 import com.leverx.model.Room;
 import com.leverx.model.Student;
 
-public class HouseNewStudentsTask extends BaseTask {
+public class HostelNewStudentsTask extends BaseTask {
 
-    public HouseNewStudentsTask(Hostel hostel) {
+    public HostelNewStudentsTask(Hostel hostel) {
         super(hostel);
     }
 
